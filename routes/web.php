@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/articles', 'IndexController@index');
+
+Route::get('/article/{id}', 'IndexController@showArticle')->name('showArticle');
+
 Route::get('/', function () {
     return view('welcome');
 });
