@@ -19,9 +19,8 @@ class IndexController extends Controller
 
     public function index() {
         $articles = Article::select(['id', 'title', 'desc', 'alias'])->get();
-//        dump($articles);
 
-        return view('page')->with([
+        return view('articles')->with([
             'header' => $this->header,
             'articles' => $articles
         ]);
@@ -29,12 +28,31 @@ class IndexController extends Controller
 
     public function showArticle($id){
         $article = Article::select('title', 'text')->where('id', $id)->first();
-//        dump($article);
 
         return view('article-content')->with([
             'header' => $this->header,
             'article' => $article
         ]);
+    }
+
+    public function addArticle() {
+        return view('article-add')->with([
+            'header' => $this->header,
+        ]);
+    }
+
+    public function saveArticle(Request $request) {
+        $this->validate($request, [
+            'title' => 'required|max:255|min:3',
+            'desc' => 'required|max:255|min:3',
+            'alias' => 'required|max:255|min:3',
+            'text' => 'required|max:1000'
+        ]);
+        $data = $request->all();
+        $new_article = new Article();
+        $new_article->fill($data);
+        $new_article->save();
+        return redirect('/articles');
     }
 
 }

@@ -8,7 +8,7 @@
                 <div class="container">
                     <h1 class="display-3">{{ $header }}</h1>
                     <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
+                    <p><a class="btn btn-primary btn-lg" href="/articles/add" role="button">Добавить статью »</a></p>
                 </div>
             </div>
 
@@ -19,7 +19,14 @@
                     <div class="col-md-4">
                         <h2>{{ $article->title }}</h2>
                         <p>{{ $article->desc }}</p>
-                        <p><a class="btn btn-secondary" href="{{ route( 'showArticle', ['id' => $article->id] ) }}" role="button">View details »</a></p>
+                        <p>
+                            <a class="btn btn-secondary" href="{{ route( 'showArticle', ['id' => $article->id] ) }}" role="button">Подробнее »</a>
+                            <form action="{{ route('deleteArticle', ['id' => $article->id]) }}" method="post">
+                                {{ method_field('DELETE') }}
+                                {{csrf_field()}}
+                                <button class="btn btn-danger" type="submit">Удалить</button>
+                            </form>
+                        </p>
                     </div>
                     @endforeach
                 </div>
