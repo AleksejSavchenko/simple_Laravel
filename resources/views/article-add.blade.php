@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label>Текст:</label>
-                            <textarea class="form-control" type="text" name="text"></textarea>
+                            <textarea class="form-control" type="text" name="text" rows="3"></textarea>
                         </div>
 
                         <button class="btn btn-dark" type="submit">Отправить</button>

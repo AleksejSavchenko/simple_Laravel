@@ -13,12 +13,12 @@ class IndexController extends Controller
 
     public function __construct()
     {
-        $this->header = 'Hello World!';
+        $this->header = 'Articles';
         $this->message = "Some message.";
     }
 
     public function index() {
-        $articles = Article::select(['id', 'title', 'desc', 'alias'])->get();
+        $articles = Article::select(['id', 'title', 'desc', 'alias'])->orderBy('title', 'asc')->get();
 
         return view('articles')->with([
             'header' => $this->header,
@@ -52,6 +52,11 @@ class IndexController extends Controller
         $new_article = new Article();
         $new_article->fill($data);
         $new_article->save();
+        return redirect('/articles');
+    }
+
+    public function deleteArticle(Article $article){
+        $article->delete();
         return redirect('/articles');
     }
 
