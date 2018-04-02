@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Cookie;
 
 class CheckAge
 {
@@ -15,9 +16,10 @@ class CheckAge
      */
     public function handle($request, Closure $next)
     {
-        if ($request->age <= 18){
-            dump($request->age);
-        }
+
+        Cookie::queue($request->path(), true, 5);
+
         return $next($request);
+
     }
 }

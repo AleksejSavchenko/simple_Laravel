@@ -1,4 +1,4 @@
-    @extends('layouts.site')
+    @extends('layouts.app')
 
         @section('content')
             <main role="main">
@@ -38,10 +38,6 @@
                         <div class="form-group">
                             <label>Описание:</label>
                             <input class="form-control" type="text" name="desc">
-                        </div>
-                        <div class="form-group">
-                            <label>Алиас:</label>
-                            <input class="form-control" type="text" name="alias">
                         </div>
                         <div class="form-group">
                             <label>Текст:</label>

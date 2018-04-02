@@ -1,6 +1,6 @@
 <!-- resources/views/tasks.blade.php -->
 
-@extends('layouts.site')
+@extends('layouts.app')
 
 @section('content')
 
@@ -69,7 +69,7 @@
                             <td>
                                 {{--<form action="{{ url('task/delete/' . $task->id) }}" method="post">--}}
                                 <form action="{{ url('task/' . $task->id) }}" method="post">
-                                    {{ csrf_field() }}
+                                    @csrf
                                     {{ method_field('DELETE') }}
                                     <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
@@ -98,6 +98,7 @@
                 </tbody>
             </table>
         </div>
+        <p></p>
     @endif
         </div>
     </main>

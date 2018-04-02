@@ -1,4 +1,4 @@
-    @extends('layouts.site')
+    @extends('layouts.app')
 
         @section('content')
             <main role="main">
@@ -18,7 +18,11 @@
                     @if($article)
                         <div class="col-md-12">
                             <h2>{{ $article->title }}</h2>
+                            <br>
+                            <label class="font-weight-bold">Текст:</label>
                             <p>{{ $article->text }}</p>
+                            <label class="font-weight-bold">Id Пользователя:</label>
+                            <p>{{ $article->user_id }}</p>
                         </div>
                     @endif
                 </div>

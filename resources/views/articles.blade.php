@@ -1,4 +1,4 @@
-    @extends('layouts.site')
+    @extends('layouts.app')
 
         @section('content')
             <main role="main">
@@ -13,6 +13,11 @@
             </div>
 
             <div class="container">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <!-- Example row of columns -->
                 <div class="row">
                     @foreach ($articles as $article)
@@ -30,7 +35,11 @@
                     </div>
                     @endforeach
                 </div>
-
+                    @if(method_exists($articles, 'links'))
+                        <div class="row">
+                            <div class="pagination col-12 mb-3 mt-3">{{ $articles->links() }}</div>
+                        </div>
+                    @endif
                 <hr>
 
             </div> <!-- /container -->
